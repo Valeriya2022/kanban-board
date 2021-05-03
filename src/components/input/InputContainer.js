@@ -4,12 +4,12 @@ import "../../styles/main.css"
 import {InputCard} from './InputCard'
 
 
-export function InputContainer({setData}) {
+export function InputContainer() {
     const [open, setOpen] = useState(false);
     return (
         <div>
             <Collapse in={open}>
-                <InputCard setOpen={setOpen} setData={setData}/>
+                <InputCard setOpen={setOpen}/>
             </Collapse>
             <Collapse in={!open}>
                 <button className={"addCard"} onClick={()=>setOpen(!open)}>            

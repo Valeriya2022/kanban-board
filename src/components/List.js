@@ -10,6 +10,13 @@ export function List() {
     }
         
     const [data, setData] = useState(initialData);
+    setTimeout(()=>{
+        // When local storage changes, dump the list to
+        // the console.
+        setData(JSON.parse(window.localStorage.getItem('backlogContent')));
+        console.log(JSON.parse(window.localStorage.getItem('backlogContent')));
+      }, 100);
+
           return (
             <div className ={"block"}>
                 <h1 className={"blockTitle"}>Backlog</h1>
@@ -17,7 +24,7 @@ export function List() {
                     return <Card value={value}/>
                 })}
     
-                <InputContainer setData={setData}/>
+                <InputContainer/>
         </div>
     )
     
