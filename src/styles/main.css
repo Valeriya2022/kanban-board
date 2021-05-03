@@ -1,0 +1,120 @@
+.addCard:hover {
+  background-color: white;
+}
+.addCard {
+  border: none;
+  margin-top: 17px;
+  color: #5e6c84;
+  cursor: pointer;
+  font-size: 18px;
+  width: auto;
+  align-items: center;
+  padding: 5px;
+  font-family: "Roboto";
+  border-radius: 8px;
+}
+.addCard.submit {
+  background-color: #0079bf;
+  color: white;
+  padding: 5px 20px;
+  margin: 0;
+}
+.input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 234px;
+}
+.input:focus {
+  outline: none;
+  border: none;
+  width: 234px;
+  font-size: 18px;
+  font-family: "Roboto";
+}
+.addCardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.card {
+  border-radius: 8px;
+  /* margin: 17px 0; */
+  height: 35px;
+  width: 90%;
+  background-color: white;
+  align-content: center;
+  padding: 8px;
+}
+.text {
+  font-size: 18px;
+  font-family: "Roboto";
+}
+.wrapper {
+  /* width: auto; */
+  background-color: #0067a3;
+  height: 55px;
+  padding: 0 18px;
+  margin: 0;
+  display: grid;
+}
+.wrapper.footer {
+  color: white;
+  align-content: center;
+  grid-template-columns: 1fr 6fr 2.5fr;
+}
+.wrapper.header {
+  grid-template-columns: 15fr 1fr;
+  align-content: center;
+}
+.logo {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 7px;
+}
+.headerTitle {
+  color: white;
+  font-size: 28px;
+  font-family: "Roboto";
+}
+.footerStatic {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.block {
+  width: 90%;
+  background-color: #ebecf0;
+  padding: 12px;
+  max-height: 75vh;
+  overflow-y: scroll;
+  border-radius: 8px;
+}
+.blockTitle {
+  color: #000000;
+  font-size: 18px;
+  font-family: "Roboto";
+}
+@media only screen and (max-width: 1231px) {
+  .footerStatic {
+    display: none;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .headerTitle {
+    display: none;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .block {
+    width: 90%;
+    background-color: #ebecf0;
+    padding: 12px;
+    max-height: 80vh;
+    overflow-y: scroll;
+    border-radius: 8px;
+  }
+}
