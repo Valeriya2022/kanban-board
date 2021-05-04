@@ -1,25 +1,24 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState} from 'react'
 import {Card} from "./Card"
-import {InputContainer} from './input/InputContainer'
+import {DropdownInput} from './input/DropdownInput'
 import '../styles/main.css'
 
-
-export function ListBacklog() {
-    let initialData = JSON.parse(localStorage.getItem("backlogContent"));
+export function ListReady() {
+    let initialData = JSON.parse(localStorage.getItem("readyContent"));
     if (initialData === null){
         initialData = []
     }
-        
     const [data, setData] = useState(initialData);
+    
 
           return (
             <div className ={"block"}>
-                <h1 className={"blockTitle"}>Backlog</h1>
+                <h1 className={"blockTitle"}>Ready</h1>
                 {data.map((value, index)=>{
                     return <Card value={value}/>
                 })}
     
-                <InputContainer setData={setData}/>
+                <DropdownInput setData={setData} data={data}/>
         </div>
     )
     
