@@ -3,7 +3,7 @@ import {Collapse} from "@material-ui/core"
 import "../../styles/main.css"
 
 
-export function InputContainer({setData}) {
+export function DropdownInput({data}) {
     const [open, setOpen] = useState(false);
     const [cardContent, setCardContent] = useState("");
     function onClickFunction (){
@@ -21,6 +21,8 @@ export function InputContainer({setData}) {
             setData(storedContent);
 
         }
+        let event = new Event('itemInserted');
+        document.dispatchEvent(event);
         setCardContent("");
         
     }
@@ -28,10 +30,10 @@ export function InputContainer({setData}) {
         <div>
             <Collapse in={open}>
                 <div className={"card addCardWrapper"}>
-                    <input type="text" value={cardContent}
-                    onChange={e => setCardContent(e.target.value)} 
-                    class={"input"}>
-                    </input>   
+                <select name="selectList" id="selectList">
+                  <option value="option 1">Option 1</option>
+                  <option value="option 2">Option 2</option>
+               </select>  
                 </div>    
             <button className={"addCard submit"} onClick={onClickFunction}>Submit</button> 
             </Collapse>

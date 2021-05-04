@@ -3,7 +3,7 @@ import {Card} from "./Card"
 import {InputContainer} from './input/InputContainer'
 import '../styles/main.css'
 
-export function List() {
+export function ListBacklog() {
     let initialData = JSON.parse(localStorage.getItem("backlogContent"));
     if (initialData === null){
         initialData = []

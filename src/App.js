@@ -1,5 +1,5 @@
 import './App.css';
-import {List} from './components/List';
+import {ListBacklog} from './components/ListBacklog';
 import {Header} from './components/Header';
 import {Footer} from './components/Footer';
 
@@ -9,10 +9,11 @@ function App() {
     <div className={"App"}>
       <Header/>
       <div className={"Container"}>
-        <List/>
-        <List/>
-        <List/>
-        <List/>
+        <ListBacklog/>
+        <ListBacklog/>
+        <ListBacklog/>
+        <ListBacklog/>
+        
       </div>
       
       <Footer/>
