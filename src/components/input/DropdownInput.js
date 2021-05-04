@@ -1,41 +1,43 @@
 import React, {useState} from 'react'
-import {Collapse} from "@material-ui/core"
+import {Collapse, Select, MenuItem} from "@material-ui/core"
 import "../../styles/main.css"
 
 
-export function DropdownInput({data}) {
+export function DropdownInput({setData, data}) {
     const [open, setOpen] = useState(false);
-    const [cardContent, setCardContent] = useState("");
-    function onClickFunction (){
+    
+    const handleChange = (event) => {
         setOpen(false);
-        let content = [cardContent]
-       
-        if (localStorage.getItem("backlogContent") === null) {
-            localStorage.setItem('backlogContent', JSON.stringify(content))
-            setData(content);
-            
-        }else{
-            let storedContent = JSON.parse(localStorage.getItem("backlogContent"));
-            storedContent.push(cardContent);
-            localStorage.setItem('backlogContent', JSON.stringify(storedContent));
-            setData(storedContent);
-
-        }
-        let event = new Event('itemInserted');
-        document.dispatchEvent(event);
-        setCardContent("");
+        setData([...data, event.target.value    ]);
+        localStorage.setItem('readyContent', JSON.stringify(data));
         
+        
+    //     if (localStorage.getItem("readyContent") == null) {
+    //         localStorage.setItem('readyContent', JSON.stringify([event.target.value]))
+    //         setData([event.target.value]);
+            
+    //     }else{
+    //         let storedContent = JSON.parse(localStorage.getItem("readyContent"));
+    //         storedContent.push(event.target.value);
+    //         localStorage.setItem('readyContent', JSON.stringify(storedContent));
+    //         setData(storedContent);
+    //   };
     }
+      let backlogData = JSON.parse(localStorage.getItem("backlogContent"));
+      if (backlogData === null){
+          backlogData = []
+      }
     return (
         <div>
             <Collapse in={open}>
-                <div className={"card addCardWrapper"}>
-                <select name="selectList" id="selectList">
-                  <option value="option 1">Option 1</option>
-                  <option value="option 2">Option 2</option>
-               </select>  
-                </div>    
-            <button className={"addCard submit"} onClick={onClickFunction}>Submit</button> 
+            <Select 
+            
+            onChange={handleChange}>
+                <MenuItem/>
+                    {backlogData.map((value, index)=>{
+                    return <MenuItem value={value}>{value}</MenuItem>
+                })}
+        </Select>             
             </Collapse>
             <Collapse in={!open}>
                 <button className={"addCard"} onClick={()=>setOpen(!open)}>            
