@@ -3,7 +3,10 @@ import {Collapse} from "@material-ui/core"
 import "../../styles/main.css"
 
 
-export function InputContainer({setData}) {
+export function InputContainer(props) {
+    const handleChange = (content) => {
+        props.handleChange(content);
+      };
     const [open, setOpen] = useState(false);
     const [cardContent, setCardContent] = useState("");
     function onClickFunction (){
@@ -12,13 +15,13 @@ export function InputContainer({setData}) {
        
         if (localStorage.getItem("backlogContent") === null) {
             localStorage.setItem('backlogContent', JSON.stringify(content))
-            setData(content);
+            handleChange(content);
             
         }else{
             let storedContent = JSON.parse(localStorage.getItem("backlogContent"));
             storedContent.push(cardContent);
             localStorage.setItem('backlogContent', JSON.stringify(storedContent));
-            setData(storedContent);
+            handleChange(storedContent);
 
         }
         setCardContent("");

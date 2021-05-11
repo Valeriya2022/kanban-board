@@ -90,7 +90,7 @@
   background-color: #ebecf0;
   padding: 12px;
   max-height: 75vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   border-radius: 8px;
 }
 .blockTitle {

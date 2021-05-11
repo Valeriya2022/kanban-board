@@ -9,7 +9,7 @@ export function DropdownInput({setData, data}) {
     const handleChange = (event) => {
         setOpen(false);
         setData([...data, event.target.value    ]);
-        localStorage.setItem('readyContent', JSON.stringify(data));
+        localStorage.setItem('readyContent', JSON.stringify([...data, event.target.value    ]));
         
         
     //     if (localStorage.getItem("readyContent") == null) {

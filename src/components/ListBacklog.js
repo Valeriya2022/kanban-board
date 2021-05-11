@@ -4,25 +4,35 @@ import {InputContainer} from './input/InputContainer'
 import '../styles/main.css'
 
 
-export function ListBacklog() {
-    let initialData = JSON.parse(localStorage.getItem("backlogContent"));
-    if (initialData === null){
-        initialData = []
+export class ListBacklog extends React.Component {
+    getInitialData() {
+        let initialData = JSON.parse(localStorage.getItem("backlogContent"));
+        if (initialData === null){
+            initialData = []
+        }
+        return initialData
     }
-        
-    const [data, setData] = useState(initialData);
-
-          return (
+    constructor() {
+        super();
+        this.state = {
+          data: this.getInitialData()
+        };
+        this.handleChange = this.handleChange.bind(this);
+      }
+      
+      handleChange(content) {
+        this.setState({ data: content });
+      }
+    render(){
+        return (
             <div className ={"block"}>
                 <h1 className={"blockTitle"}>Backlog</h1>
-                {data.map((value, index)=>{
+                {this.state.data.map((value, index)=>{
                     return <Card value={value}/>
                 })}
     
-                <InputContainer setData={setData}/>
+                <InputContainer handleChange={this.handleChange}/>
         </div>
     )
-    
-         
-    
+    }
 }
