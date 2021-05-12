@@ -10,10 +10,11 @@ export function Header() {
         <div><div className={"headerTitle"}>Awesome Kanban Board</div></div>
             
             <div className={"logo"}>
-                <img src={Avatar} alt="Avatar"></img>
-                <img src={Vector_down} alt="Vector"></img>
-            </div>
+            <img src={Avatar} alt="Avatar"></img>
+            <img src={Vector_down} alt="Vector"></img>
+                
             
+        </div>
         </div>
     )
 }

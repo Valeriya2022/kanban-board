@@ -1,46 +1,52 @@
 import React, {useState} from 'react'
-import {Collapse, Select, MenuItem} from "@material-ui/core"
+import {Collapse, Select, MenuItem, FormControl} from "@material-ui/core"
 import "../../styles/main.css"
 
 
-export function DropdownInput({setData, data}) {
+export function DropdownInput(props) {
     const [open, setOpen] = useState(false);
-    
+    const [buttonState, setButtonState] = useState(props.prevData.length === 0);
+    const prevData=props.prevData;
+    setTimeout(
+        function (){
+            setButtonState(props.prevData.length === 0)
+        },100
+    );
     const handleChange = (event) => {
-        setOpen(false);
-        setData([...data, event.target.value    ]);
-        localStorage.setItem('readyContent', JSON.stringify([...data, event.target.value    ]));
+        if (event.target.value != NaN){
+            setOpen(false);
+        props.setData([...props.data, event.target.value    ]);
+        localStorage.setItem(props.storage, JSON.stringify([...props.data, event.target.value]));
+        let filtered = prevData.filter(function(value, index, arr){ 
+            return value !== event.target.value;
+        });
+        localStorage.setItem(props.prevStorage, JSON.stringify(filtered)); 
+        props.setPrevData(filtered);
+        }
         
         
-    //     if (localStorage.getItem("readyContent") == null) {
-    //         localStorage.setItem('readyContent', JSON.stringify([event.target.value]))
-    //         setData([event.target.value]);
-            
-    //     }else{
-    //         let storedContent = JSON.parse(localStorage.getItem("readyContent"));
-    //         storedContent.push(event.target.value);
-    //         localStorage.setItem('readyContent', JSON.stringify(storedContent));
-    //         setData(storedContent);
-    //   };
-    }
-      let backlogData = JSON.parse(localStorage.getItem("backlogContent"));
-      if (backlogData === null){
-          backlogData = []
       }
     return (
         <div>
             <Collapse in={open}>
-            <Select 
-            
-            onChange={handleChange}>
-                <MenuItem/>
-                    {backlogData.map((value, index)=>{
-                    return <MenuItem value={value}>{value}</MenuItem>
-                })}
-        </Select>             
+            <select className={"select"} onChange={handleChange}>
+                <option value={NaN}></option>
+                {prevData.map((value, index)=>{
+                    if (value.length > 50){
+                        return <option className={"option"} value={value}>{value.slice(0, 40)}...</option>
+                    }
+                    return <option className={"option"} value={value}>{value}</option>
+
+                }
+                )}
+                <option value={NaN}></option>
+                
+                
+
+        </select>             
             </Collapse>
             <Collapse in={!open}>
-                <button className={"addCard"} onClick={()=>setOpen(!open)}>            
+                <button disabled={buttonState} className={"addCard"} onClick={()=>setOpen(!open)}>            
                 + Add card
                 </button>
             </Collapse>

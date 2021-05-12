@@ -13,14 +13,14 @@ export function InputContainer(props) {
         setOpen(false);
         let content = [cardContent]
        
-        if (localStorage.getItem("backlogContent") === null) {
-            localStorage.setItem('backlogContent', JSON.stringify(content))
+        if (localStorage.getItem(props.storage) === null) {
+            localStorage.setItem(props.storage, JSON.stringify(content))
             handleChange(content);
             
         }else{
-            let storedContent = JSON.parse(localStorage.getItem("backlogContent"));
+            let storedContent = JSON.parse(localStorage.getItem(props.storage));
             storedContent.push(cardContent);
-            localStorage.setItem('backlogContent', JSON.stringify(storedContent));
+            localStorage.setItem(props.storage, JSON.stringify(storedContent));
             handleChange(storedContent);
 
         }

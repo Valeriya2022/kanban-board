@@ -13,11 +13,28 @@
   font-family: "Roboto";
   border-radius: 8px;
 }
+.addCard:disabled:hover {
+  background-color: #ebecf0;
+}
+.addCard:disabled{
+  cursor: default;
+}
 .addCard.submit {
   background-color: #0079bf;
   color: white;
   padding: 5px 20px;
   margin: 0;
+}
+.select{
+  width: 95%;
+  height: 35px;
+  size: 3;
+  border: none;
+  white-space: normal;
+  line-height: normal;
+}
+.option {
+  width: 50px;
 }
 .input {
   border: none;
@@ -39,8 +56,8 @@
 }
 .card {
   border-radius: 8px;
-  /* margin: 17px 0; */
-  height: 35px;
+  margin: 17px 0; 
+  height: auto;
   width: 90%;
   background-color: white;
   align-content: center;
@@ -89,23 +106,41 @@
   width: 90%;
   background-color: #ebecf0;
   padding: 12px;
-  max-height: 75vh;
-  overflow-y: auto;
   border-radius: 8px;
+  max-height: 75vh;
+}
+.blockData {
+  background-color: #ebecf0;
+  max-height: 70vh;
+  overflow-y: auto;
+  
 }
 .blockTitle {
   color: #000000;
   font-size: 18px;
   font-family: "Roboto";
 }
+
+
+ul li{
+  display: inline-block;
+    position: relative;
+    margin: 1em
+}
 @media only screen and (max-width: 1231px) {
   .footerStatic {
     display: none;
   }
 }
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 625px) {
   .headerTitle {
     display: none;
+    background-color: #0079bf;
+  }
+}
+@media only screen and (max-width: 625px) {
+  .wrapper {
+    background-color: #0079bf;
   }
 }
 @media only screen and (max-width: 500px) {
