@@ -1,14 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Collapse} from "@material-ui/core"
 import "../../styles/main.css"
 
 
-export function InputContainer(props) {
+export function InputContainer(props) {    
     const handleChange = (content) => {
         props.handleChange(content);
       };
     const [open, setOpen] = useState(false);
     const [cardContent, setCardContent] = useState("");
+    useEffect(()=>{
+        const onClick = e => {
+            // If the active element exists and is clicked outside of
+            if (cardContent !== "") {
+              setOpen(!open);
+              onClickFunction();
+            }
+          };
+      
+          // If the item is active (ie open) then listen for clicks outside
+          if (open) {
+            window.addEventListener("click", onClick);
+          }
+      
+          return () => {
+            window.removeEventListener("click", onClick);
+          };
+    })
     function onClickFunction (){
         setOpen(false);
         let content = [cardContent]
@@ -30,6 +48,7 @@ export function InputContainer(props) {
     return (
         <div>
             <Collapse in={open}>
+                
                 <div className={"card addCardWrapper"}>
                     <input type="text" value={cardContent}
                     onChange={e => setCardContent(e.target.value)} 

@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import {Collapse, Select, MenuItem, FormControl} from "@material-ui/core"
+import React, {useState, useEffect} from 'react'
+import {Collapse} from "@material-ui/core"
 import "../../styles/main.css"
 
 
@@ -26,11 +26,12 @@ export function DropdownInput(props) {
         
         
       }
+     
     return (
         <div>
             <Collapse in={open}>
             <select className={"select"} onChange={handleChange}>
-                <option value={NaN}></option>
+                <option className={"option"} value={NaN}></option>
                 {prevData.map((value, index)=>{
                     if (value.length > 50){
                         return <option className={"option"} value={value}>{value.slice(0, 40)}...</option>
@@ -39,7 +40,6 @@ export function DropdownInput(props) {
 
                 }
                 )}
-                <option value={NaN}></option>
                 
                 
 

@@ -75,7 +75,7 @@ class App extends React.Component {
           
         </div>
         
-        <Footer/>
+        <Footer activeTasks={this.state.backlogData.length} finishedTasks={this.state.finishedData.length}/>
       </div>
       
     );

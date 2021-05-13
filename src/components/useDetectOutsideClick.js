@@ -28,3 +28,4 @@ export const useDetectOutsideClick = (el, initialState) => {
 
   return [isActive, setIsActive];
 };
+
