@@ -71,7 +71,7 @@
   /* width: auto; */
   background-color: #0067a3;
   height: 55px;
-  padding: 0 18px;
+  padding: 18px;
   margin: 0;
   display: grid;
 }
@@ -81,7 +81,8 @@
   grid-template-columns: 1fr 6fr 2.5fr;
 }
 .wrapper.header {
-  grid-template-columns: 15fr 1fr;
+  display: flex;
+  justify-content: space-between;
   align-content: center;
 }
 .logo {
@@ -111,7 +112,7 @@
 }
 .blockData {
   background-color: #ebecf0;
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
   
 }
@@ -133,11 +134,13 @@ ul li{
   }
 }
 @media only screen and (max-width: 625px) {
-  .headerTitle {
-    display: none;
+  .headerTitle{
+    color: #0079bf;
     background-color: #0079bf;
   }
+  
 }
+
 @media only screen and (max-width: 625px) {
   .wrapper {
     background-color: #0079bf;
@@ -153,3 +156,74 @@ ul li{
     border-radius: 8px;
   }
 }
+.container{
+  display: grid;
+  grid-template-columns: 50px 20px;
+}
+
+.menu-trigger {
+  background-color: transparent;
+  border-radius: 90px;
+  cursor: pointer;
+  align-items: center;
+  padding: 4px 6px;
+  border: none;
+  /* vertical-align: middle; */
+  /* transition: box-shadow 0.4s ease; */
+  /* margin-left: auto; Strictly for positioning   */
+}
+
+.menu {
+  background: #ffffff;
+  border-radius: 8px;
+  position: absolute;
+  top: 70px;
+  right: 30px;
+  width: 150px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  /* transform: translateY(-20px); */
+  /* transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s; */
+}
+
+.menu.active {
+  opacity: 1;
+  visibility: visible;
+  /* transform: translateY(0); */
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.menu li a {
+  text-decoration: none;
+  color: #333333;
+  display: block;
+}
+menu:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: solid transparent;
+  border-width: 10px;
+  border-bottom-color: #2B1A41;
+  z-index: 0;
+}
+.menu:before {
+  content: "";
+  position: absolute;
+  border-color: rgba(194, 225, 245, 0);
+  border: solid transparent;
+  border-bottom-color: white;
+  border-width: 11px;
+  margin-left: -10px;
+  top: -21px;
+  right: 27px;
+  z-index: 1;
+}   
